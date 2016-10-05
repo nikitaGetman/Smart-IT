@@ -1,0 +1,24 @@
+$myColor: #009a82;
+$myFontSize: 13px;
+$myMargin: 0px auto;
+$myWidth: 460px;
+ 
+h1 {
+    color: $myColor;
+    margin: 0;
+    padding: 0;
+}
+ 
+#container {
+    width: $myWidth;
+    margin: $myMargin;
+}
+*{
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(45deg, #ccc, #666);
+}
+
+h5{
+	color: $myColor;
+}

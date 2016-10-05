@@ -1,0 +1,16 @@
+h1 {
+  color: #009a82;
+  margin: 0;
+  padding: 0; }
+
+#container {
+  width: 460px;
+  margin: 0px auto; }
+
+* {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(45deg, #ccc, #666); }
+
+h5 {
+  color: #009a82; }
