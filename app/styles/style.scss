@@ -1,24 +1,119 @@
-$myColor: #009a82;
-$myFontSize: 13px;
-$myMargin: 0px auto;
-$myWidth: 460px;
- 
-h1 {
-    color: $myColor;
-    margin: 0;
-    padding: 0;
-}
- 
-#container {
-    width: $myWidth;
-    margin: $myMargin;
-}
+$mainGrayColor: #2f3131;
+$addGrayColor: #4d5356;
+$legendColor: #1c1d1d;
+$mainPinkColor: #ea4c88;
+$linkColor: #c6cfd8;
+$linkHoverColor: #fefefe;
+$mainTextColor: #e4e8ed;
+$addTextColor: #c1c3c5;
+
+$fontSize : 25px;
+$mainFont : Helvetica, Arial;
+
+$paddings : 20px;
+
+$width : 1280px;
+$height: 720px; 
+
+$leftBarWidth : 250px;
+
 *{
-	margin: 0;
 	padding: 0;
-	background: linear-gradient(45deg, #ccc, #666);
+	margin: 0;
+	font-size: $fontSize;
+	font-family: $mainFont;
+	color: $mainTextColor;
+}
+.nav-item, .video-item{
+	color: $linkColor;
+	padding: 7px 15px;
+}
+.focus{
+	background-color: $mainPinkColor !important;
+	color: $linkHoverColor !important;
+}
+ul{list-style: none;}
+.row > div{
+	padding: 0;
+}
+.legend{
+	background-color: $mainGrayColor;
+	border-top: 1px solid $addGrayColor;
 }
 
-h5{
-	color: $myColor;
+
+// Header
+.navbar{
+	background-color: $mainGrayColor;
+	margin: 0;
+	border: none;
+	border-bottom: 1px solid $addGrayColor;
+	border-radius: 0;
+
+	.navbar-collapse{
+		padding: 0;
+		.menu-navigation{
+			float: right;
+
+			li{
+				border-left: 1px solid $addGrayColor;
+				padding: 20px 35px;
+				display: inline-block;
+				line-height: 1em;
+			}
+		}
+	}
 }
+
+
+// Left bar
+.left-sidebar{
+	background-color: $mainGrayColor;
+	border-right: 1px solid $addGrayColor;
+	width: $leftBarWidth;
+	position: absolute;
+	top: 66px;
+	bottom: 32px;
+
+
+	.menu-items{
+		.nav-item{
+			width: 100%;
+		}
+
+	}
+}
+
+
+// Main bar
+.scenes-wrapper{
+	background-color: $mainGrayColor;
+	position: absolute;
+	left: $leftBarWidth;
+	right: 0;
+	top: 66px;
+	bottom: 32px;
+
+	.scene{
+		background-color: $mainGrayColor;
+	}
+
+	.scene-playlist{
+		.row{
+			padding-left: $paddings;
+			>div{
+				padding-right: $paddings;
+			}
+
+			.block{
+				margin-top: $paddings;
+				background-color: $addGrayColor;
+				height: 300px;
+			}
+			.block:hover{
+				background-color: $mainPinkColor;
+			}
+		}
+	}
+}
+

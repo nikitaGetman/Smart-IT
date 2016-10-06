@@ -1,24 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Smart IT</title>
+	<meta http-equiv="Content-Type" content="text/html; Charset=UTF-8"/>
 	<!-- build:css css/vendor.css -->
 	<!-- bower:css -->
 	<link rel="stylesheet" href="bower_components/normalize-css/normalize.css" />
 	<!-- endbower -->
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
 	<!-- endbuild -->
 	<!-- build:css css/main.css -->
+	<link rel="stylesheet" href="styles/css/sb_style.css" />
 	<link rel="stylesheet" href="styles/css/style.css">
+	
+	<link rel="stylesheet" href="styles/css/input.css">
+	<link rel="stylesheet" href="styles/css/keyboard.css">
+	<link rel="stylesheet" href="styles/css/legend.css">
 	<!-- endbuild -->
-</head>
-<body>
-	Hello World!
+
 	<!-- build:js scripts/vendor.js -->
 	<!-- bower:js -->
 	<script src="bower_components/jquery/dist/jquery.js"></script>
 	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="bower_components/lodash/lodash.js"></script>
+	<script src="bower_components/eventEmitter/EventEmitter.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
+
+	<!-- build:js scripts/main.js -->	
+	<script src="scripts/smartbox.js"></script>
+	<script src="scripts/app.js"></script>
+	<script src="scripts/legendTrigger.js"></script>
+
+	<script src="scripts/scenes/playlist.js"></script>
+	<script src="scripts/scenes/settings.js"></script>
+	<!-- endbuild -->
+
+</head>
+<body>
+	<div class="bg"></div>
+
+	<div class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<div class="navbar-brand">
+				
+			</div>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="navbar-nav menu-navigation">
+				<li class="nav-item" data-content="playlist">Playlist</li>
+				<li class="nav-item" data-content="popular">Popular</li>
+				<li class="nav-item" data-content="settings"><i class="fa fa-cog"></i></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="container-fluid">
+		<div class="row">
+			<!-- Left sidebar -->	
+			<div class="left-sidebar">
+				<div class="menu-items" data-nav_type="vbox" data-nav_loop="true">
+					<div class="nav-item" data-content="Algorithms">Algorithms</div>
+					<div class="nav-item" data-content="Web">Web</div>
+					<div class="nav-item" data-content="iOS">iOS</div>
+					<div class="nav-item" data-content="Android">Android</div>
+					<div class="nav-item" data-content="Podcasts">Podcasts</div>
+				</div>
+			</div>
+
+			<!-- Scenes wrapper -->
+			<div class="scenes-wrapper">
+				<!-- Scene Playlist -->
+				<div class="scene scene-playlist">
+					<div class="container-fluid">
+						<div class="row">
+								<div class="col-md-3" data-nav_type="vbox">
+									<div class="block nav-item video-item">
+									</div>
+								</div>
+								<div class="col-md-3" data-nav_type="vbox">
+									<div class="block nav-item video-item">
+									</div>
+								</div>
+								<div class="col-md-3" data-nav_type="vbox">
+									<div class="block nav-item video-item">
+									</div>
+								</div>
+								<div class="col-md-3" data-nav_type="vbox">
+									<div class="block nav-item video-item">
+									</div>
+								</div>
+								<div class="col-md-3" data-nav_type="vbox">
+									<div class="block nav-item nav-item video-item">
+									</div>
+								</div>
+								<div class="col-md-3" data-nav_type="vbox">
+									<div class="block nav-item video-item">
+									</div>
+								</div>
+								<div class="col-md-3" data-nav_type="vbox">
+									<div class="block nav-item video-item">
+									</div>
+								</div>
+								<div class="col-md-3" data-nav_type="vbox">
+									<div class="block nav-item video-item">
+									</div>
+								</div>
+								<div class="col-md-3" data-nav_type="vbox">
+									<div class="block nav-item video-item">
+									</div>
+								</div>
+							</div>	
+						</div>
+				</div>	
+
+				<!-- Scene Settings -->
+				<div class="scene scene-settings">
+					<div class="container-fluid">
+						<div class="row">
+							<p class="text-center">
+								Settings Scene
+							</p>
+						</div>
+					</div>
+				</div>
+						
+			</div>
+
+
+
+		</div>
+	</div>
+
 </body>
 </html>

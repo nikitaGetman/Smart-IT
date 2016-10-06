@@ -4,6 +4,9 @@
   "dependencies": {
     "jquery": "^3.1.1",
     "normalize-css": "normalize.css#^5.0.0",
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3",
+    "lodash": "^4.16.3",
+    "eventEmitter": "^5.1.0"
   }
 }
