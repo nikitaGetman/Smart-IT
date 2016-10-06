@@ -1,10 +1,6 @@
 $(function () {
 
     //init player and navigation
-    Player.init();
-    $('input').smartInput({
-
-    });
     $$nav.on();
 
     //shortcuts for controls
@@ -18,7 +14,7 @@ $(function () {
 
     $('.set_video_url').click(function () {
         Player.play({
-            url: $('input').val()
+            url: "test_video.mp4"
         });
     });
 

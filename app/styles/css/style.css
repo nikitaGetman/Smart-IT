@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  outline: none !important;
   font-size: 25px;
   font-family: Helvetica, Arial;
   color: #e4e8ed; }
@@ -68,3 +69,47 @@ ul {
       height: 300px; }
     .scenes-wrapper .scene-playlist .row .block:hover {
       background-color: #ea4c88; }
+
+.player {
+  color: #2f3131;
+  z-index: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0; }
+  .player .bottom_bar {
+    background: rgba(49, 49, 49, 0.75);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    padding: 8px 32px;
+    height: 83px; }
+    .player .bottom_bar .progress {
+      margin: 0;
+      border-radius: 6px; }
+    .player .bottom_bar .player_controls {
+      margin-top: 8px;
+      width: 100%;
+      text-align: center; }
+    .player .bottom_bar .current-time, .player .bottom_bar .duration {
+      font-size: 18px;
+      margin-top: 2px; }
+    .player .bottom_bar .current-time {
+      float: left;
+      margin-left: 8px; }
+    .player .bottom_bar .duration {
+      float: right;
+      margin-right: 8px; }
+    .player .bottom_bar .progress-bar {
+      transition: none;
+      background-color: #ea4c88; }
+    .player .bottom_bar .btn {
+      border: none;
+      background-color: #fefefe;
+      padding: 12px 24px; }
+    .player .bottom_bar .btn > i {
+      color: #4d5356; }
+    .player .bottom_bar .focus > i {
+      color: #fefefe; }
