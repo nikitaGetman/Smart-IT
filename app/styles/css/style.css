@@ -20,10 +20,6 @@ ul {
 .row > div {
   padding: 0; }
 
-.legend {
-  background-color: #2f3131;
-  border-top: 1px solid #4d5356; }
-
 .navbar {
   background-color: #2f3131;
   margin: 0;
@@ -40,25 +36,31 @@ ul {
         display: inline-block;
         line-height: 1em; }
 
-.left-sidebar {
-  background-color: #2f3131;
-  border-right: 1px solid #4d5356;
-  width: 250px;
-  position: absolute;
-  top: 66px;
-  bottom: 32px; }
-  .left-sidebar .menu-items .nav-item {
-    width: 100%; }
-
 .scenes-wrapper {
   background-color: #2f3131;
   position: absolute;
-  left: 250px;
-  right: 0;
+  width: 100%;
   top: 66px;
-  bottom: 32px; }
+  bottom: 32px;
+  left: 0; }
   .scenes-wrapper .scene {
     background-color: #2f3131; }
+  .scenes-wrapper .left-sidebar {
+    background-color: #2f3131;
+    border-right: 1px solid #4d5356;
+    width: 250px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0; }
+    .scenes-wrapper .left-sidebar .menu-items .nav-item {
+      width: 100%; }
+  .scenes-wrapper .content {
+    position: absolute;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+    top: 0; }
   .scenes-wrapper .scene-playlist .row {
     padding-left: 20px; }
     .scenes-wrapper .scene-playlist .row > div {
@@ -113,3 +115,9 @@ ul {
       color: #4d5356; }
     .player .bottom_bar .focus > i {
       color: #fefefe; }
+
+.legend {
+  background-color: #2f3131;
+  border-top: 1px solid #4d5356; }
+  .legend .legend-item span, .legend .legend-item i {
+    font-size: 16px !important; }

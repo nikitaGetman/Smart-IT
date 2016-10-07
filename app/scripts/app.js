@@ -5,6 +5,7 @@
     currentScene: null,
     scenes: {},
     isShown: true,
+    isPlayerInited: false,
 
     initialize: function () {
       console.log('Initialization');
@@ -51,9 +52,9 @@
       Player.on('ready', function () {
         $$log('player ready');
         console.log('player ready');
-       
-        var e = $.Event("keydown", { keyCode: 68}); //"keydown" if that's what you're doing
-        $("body").trigger(e);
+
+        self.isPlayerInited = true;
+        self.toggleView();
       });
       Player.on('stop', function () {
         $$log('player stop');
@@ -65,20 +66,24 @@
     },
 
     toggleView: function () {
-      console.log('Toggle view');
-      if (this.isShown) {
-          this.$wrap.hide();
-          $$legend.hide();
-          this.$player.show();
-          $$nav.save();
-          $$nav.on(this.$player);
-      } else {
-          this.$player.hide();
-          this.$wrap.show();
-          $$legend.show();
-          $$nav.restore();
+      console.log('Toggling + ' + this.isPlayerInited);
+      if(this.isPlayerInited){
+        if (this.isShown) {
+            this.$wrap.hide();
+            $$legend.hide();
+            this.$player.show();
+            $$nav.save();
+            $$nav.on(this.$player);
+        } else {
+            Player.pause();
+            this.$player.hide();
+            this.$wrap.show();
+            $$legend.show();
+            $$nav.restore();
+
+        }
+        this.isShown = !this.isShown;
       }
-      this.isShown = !this.isShown;
     },
 
     showContent: function ( scene ) {

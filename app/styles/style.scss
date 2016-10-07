@@ -37,10 +37,6 @@ ul{list-style: none;}
 .row > div{
 	padding: 0;
 }
-.legend{
-	background-color: $mainGrayColor;
-	border-top: 1px solid $addGrayColor;
-}
 
 
 // Header
@@ -67,36 +63,43 @@ ul{list-style: none;}
 }
 
 
-// Left bar
-.left-sidebar{
-	background-color: $mainGrayColor;
-	border-right: 1px solid $addGrayColor;
-	width: $leftBarWidth;
-	position: absolute;
-	top: 66px;
-	bottom: 32px;
-
-
-	.menu-items{
-		.nav-item{
-			width: 100%;
-		}
-
-	}
-}
-
-
 // Main bar
 .scenes-wrapper{
 	background-color: $mainGrayColor;
 	position: absolute;
-	left: $leftBarWidth;
-	right: 0;
+	width: 100%;
 	top: 66px;
 	bottom: 32px;
+	left: 0;
 
 	.scene{
 		background-color: $mainGrayColor;
+	}
+
+	// Left bar
+	.left-sidebar{
+		background-color: $mainGrayColor;
+		border-right: 1px solid $addGrayColor;
+		width: $leftBarWidth;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+
+		.menu-items{
+			.nav-item{
+				width: 100%;
+			}
+
+		}
+	}
+	
+	.content{
+		position: absolute;
+		left: $leftBarWidth;
+		right: 0;
+		bottom: 0;
+		top: 0;
 	}
 
 	.scene-playlist{
@@ -178,6 +181,18 @@ ul{list-style: none;}
 			color: $linkHoverColor;
 		}
 	}
-
-	
 }
+
+
+// Legend
+.legend{
+	background-color: $mainGrayColor;
+	border-top: 1px solid $addGrayColor;
+	
+	.legend-item {
+		span, i{
+			font-size: 16px !important;
+		}
+	}
+}
+

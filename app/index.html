@@ -59,80 +59,53 @@
 		</div>
 	</div>
 	
-	<div class="container-fluid">
-		<div class="row">
-			<!-- Left sidebar -->	
+
+
+	<!-- Scenes wrapper -->
+	<div class="scenes-wrapper">
+		<!-- Scene Playlist -->
+		<div class="scene scene-playlist">
+				<!-- Left sidebar -->	
 			<div class="left-sidebar">
 				<div class="menu-items" data-nav_type="vbox" data-nav_loop="true">
-					<div class="nav-item" data-content="Algorithms">Algorithms</div>
-					<div class="nav-item" data-content="Web">Web</div>
-					<div class="nav-item" data-content="iOS">iOS</div>
-					<div class="nav-item" data-content="Android">Android</div>
-					<div class="nav-item" data-content="Podcasts">Podcasts</div>
+					<div class="nav-item playlist-item" data-content="Algorithms">Algorithms</div>
+					<div class="nav-item playlist-item" data-content="Web">Web</div>
+					<div class="nav-item playlist-item" data-content="iOS">iOS</div>
+					<div class="nav-item playlist-item" data-content="Android">Android</div>
+					<div class="nav-item playlist-item" data-content="Podcasts">Podcasts</div>
 				</div>
 			</div>
-
-			<!-- Scenes wrapper -->
-			<div class="scenes-wrapper">
-				<!-- Scene Playlist -->
-				<div class="scene scene-playlist">
-					<div class="container-fluid">
-						<div class="row">
-								<div class="col-md-3" data-nav_type="vbox">
-									<div class="block nav-item video-item" data-url="test_video.mp4" data-type="hls">
-									1
-									</div>
-								</div>
-								<div class="col-md-3" data-nav_type="vbox">
-									<div class="block nav-item video-item">
-									</div>
-								</div>
-								<div class="col-md-3" data-nav_type="vbox">
-									<div class="block nav-item video-item">
-									</div>
-								</div>
-								<div class="col-md-3" data-nav_type="vbox">
-									<div class="block nav-item video-item">
-									</div>
-								</div>
-								<div class="col-md-3" data-nav_type="vbox">
-									<div class="block nav-item nav-item video-item">
-									</div>
-								</div>
-								<div class="col-md-3" data-nav_type="vbox">
-									<div class="block nav-item video-item">
-									</div>
-								</div>
-								<div class="col-md-3" data-nav_type="vbox">
-									<div class="block nav-item video-item">
-									</div>
-								</div>
-								<div class="col-md-3" data-nav_type="vbox">
-									<div class="block nav-item video-item">
-									</div>
-								</div>
-								<div class="col-md-3" data-nav_type="vbox">
-									<div class="block nav-item video-item">
-									</div>
-								</div>
-							</div>	
-						</div>
+				<!--  -->
+			<div class="container-fluid content">
+				<div class="row">
+						<div class="col-md-3" data-nav_type="vbox">
+							<div class="block nav-item video-item" data-url="test_video.mp4" data-type="hls">
+							1
+							</div>
+						</div>						
 				</div>	
-
-				<!-- Scene Settings -->
-				<div class="scene scene-settings">
-					<div class="container-fluid">
-						<div class="row">
-							<p class="text-center">
-								Settings Scene
-							</p>
-						</div>
-					</div>
-				</div>
-						
 			</div>
 
+		</div>	
+
+		<!-- Scene Settings -->
+		<div class="scene scene-settings">
+				<!-- Left sidebar -->	
+			<div class="left-sidebar">
+				<div class="menu-items" data-nav_type="vbox" data-nav_loop="true">
+					<div class="nav-item" data-content="categories">Categories</div>
+					<div class="nav-item" data-content="language">Search parameters</div>
+					<div class="nav-item" data-content="new_playlist">New playlist</div>
+				</div>
+			</div>
+				<!-- Content -->
+			<div class="container-fluid content">
+				<div class="row">
+					<p class="text-center">Settings Scene</p>				
+				</div>	
+			</div>
 		</div>
+				
 	</div>
 
 </div>
@@ -145,7 +118,7 @@
         <div class="duration">00:00</div>
         <div class="current-time">00:00</div>
 
-        <div class="player_controls">
+        <div class="player_controls" data-nav_loop="true" data-nav_type="hbox">
             <div class="btn btn-default nav-item button_rw"><i class="fa fa-backward"></i></div>
             <div class="btn btn-default nav-item button_play_pause"><i class="fa fa-play fa-pause"></i></div>
             <div class="btn btn-default nav-item button_ff"><i class="fa fa-forward"></i></div>

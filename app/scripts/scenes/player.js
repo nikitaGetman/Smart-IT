@@ -9,7 +9,7 @@ $(function () {
         $player = $('.player');
 
 
-    // hide player buttons each 10 seconds inactivity
+    // hide player buttons each 7 seconds inactivity
     var $time = 0,
         isShown = false,
         isPlaying = false;
@@ -45,7 +45,7 @@ $(function () {
 
     //set progress bar position while video playing
     Player.on("update", function () {
-        if(isShown){
+        if(isShown || isPlaying){
             var currentTime = Player.videoInfo.currentTime;
             $progressBar.css({
                 width: currentTime / Player.videoInfo.duration * 100 + "%"
@@ -59,6 +59,8 @@ $(function () {
         $currentTime.html(Player.formatTime(0));
         $duration.html(Player.formatTime(Player.videoInfo.duration));
         isPlaying = true;
+        $pausePlayButton.find('.fa').removeClass('fa-play');
+        $pausePlayButton.find('.fa').addClass('fa-pause');
     });
 
     //rewind to start after complete
@@ -83,9 +85,16 @@ $(function () {
 
     $pausePlayButton.click(function () {
         Player.togglePause();
-        $pausePlayButton.find('.fa').toggleClass("fa-pause");
+        if(Player.state === 'pause'){
+            $pausePlayButton.find('.fa').addClass('fa-play');
+            $pausePlayButton.find('.fa').removeClass('fa-pause');
+        }else if(Player.state === 'play'){
+            $pausePlayButton.find('.fa').addClass('fa-pause');
+            $pausePlayButton.find('.fa').removeClass('fa-play');
+        }
         showPlayer();
     });
+
 
     //jump backward to 10 seconds
     $('.button_rw').click(function () {
@@ -101,12 +110,9 @@ $(function () {
 
     $('.button_compress').click(function(){
         isPlaying = false;
-
-        Player.pause();
         $pausePlayButton.find('.fa').removeClass("fa-pause");
         
-        var e = $.Event("keydown", { keyCode: 68}); //"keydown" if that's what you're doing
-        $("body").trigger(e);
+        App.toggleView();
     });
 
     $('.btn').on('nav_focus', function(){
@@ -115,8 +121,15 @@ $(function () {
 
     $('body').on('nav_key', function(){
         if(isPlaying){
-            console.log('nav_key:right');
             showPlayer();
+        
+            if(Player.state === 'pause'){
+                $pausePlayButton.find('.fa').addClass('fa-play');
+                $pausePlayButton.find('.fa').removeClass('fa-pause');
+            }else if(Player.state === 'play'){
+                $pausePlayButton.find('.fa').addClass('fa-pause');
+                $pausePlayButton.find('.fa').removeClass('fa-play');
+            }
         }
     });
 });
