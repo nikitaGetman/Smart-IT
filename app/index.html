@@ -33,6 +33,7 @@
 	<!-- build:js scripts/main.js -->	
 	<script src="scripts/smartbox.js"></script>
 	<script src="scripts/app.js"></script>
+	<script src="scripts/app_config.js"></script>
 	<script src="scripts/legendTrigger.js"></script>
 
 	<script src="scripts/scenes/playlist.js"></script>
@@ -52,7 +53,7 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="navbar-nav menu-navigation">
-				<li class="nav-item" data-content="playlist">Playlist</li>
+				<li class="nav-item" data-content="playlist">Home</li>
 				<li class="nav-item" data-content="popular">Popular</li>
 				<li class="nav-item" data-content="settings"><i class="fa fa-cog"></i></li>
 			</ul>
@@ -93,15 +94,26 @@
 				<!-- Left sidebar -->	
 			<div class="left-sidebar">
 				<div class="menu-items" data-nav_type="vbox" data-nav_loop="true">
-					<div class="nav-item" data-content="categories">Categories</div>
-					<div class="nav-item" data-content="language">Search parameters</div>
-					<div class="nav-item" data-content="new_playlist">New playlist</div>
+					<div class="nav-item leftbar-item" data-content="categories">Categories</div>
+					<div class="nav-item leftbar-item" data-content="search_parameters">Search parameters</div>
+					<div class="nav-item leftbar-item" data-content="new_playlist">New playlist</div>
 				</div>
 			</div>
 				<!-- Content -->
 			<div class="container-fluid content">
 				<div class="row">
-					<p class="text-center">Settings Scene</p>				
+					<div class="module-categories module">
+						<div class="box col-md-6">
+						</div>
+					</div>	
+					<div class="module-search_parameters module">
+						<div class="box col-md-6">
+							p.nav-item
+						</div>
+					</div>
+					<div class="module-new_playlist module">
+						New Playlist
+					</div>			
 				</div>	
 			</div>
 		</div>
@@ -119,10 +131,11 @@
         <div class="current-time">00:00</div>
 
         <div class="player_controls" data-nav_loop="true" data-nav_type="hbox">
+        	<div class="btn btn-default nav-item button_add btn-lateral"><i class="fa fa-plus"></i></div>
             <div class="btn btn-default nav-item button_rw"><i class="fa fa-backward"></i></div>
             <div class="btn btn-default nav-item button_play_pause"><i class="fa fa-play fa-pause"></i></div>
             <div class="btn btn-default nav-item button_ff"><i class="fa fa-forward"></i></div>
-            <div class="btn btn-default nav-item button_compress"><i class="fa fa-compress"></i></div>
+            <div class="btn btn-default nav-item button_compress btn-lateral"><i class="fa fa-compress"></i></div>
         </div>
 
     </div>

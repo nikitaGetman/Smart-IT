@@ -76,6 +76,7 @@ ul{list-style: none;}
 		background-color: $mainGrayColor;
 	}
 
+
 	// Left bar
 	.left-sidebar{
 		background-color: $mainGrayColor;
@@ -101,10 +102,10 @@ ul{list-style: none;}
 		bottom: 0;
 		top: 0;
 	}
-
+	// Playlist scene
 	.scene-playlist{
-		.row{
-			padding-left: $paddings;
+		.row{	
+			padding-left: $paddings;		
 			>div{
 				padding-right: $paddings;
 			}
@@ -116,6 +117,46 @@ ul{list-style: none;}
 			}
 			.block:hover{
 				background-color: $mainPinkColor;
+			}
+		}
+	}
+
+	.scene-settings{
+		.box{
+			padding-top: $paddings; 
+		}
+		.module-categories, .module-search_parameters{
+			h2{
+				text-transform: capitalize;
+			}
+			.nav-item{
+				font-size: 20px;
+				display: block;
+				border-radius: 8px;
+				position: relative;
+				padding-left: 40px;
+			}
+			.nav-item:before {
+				content: "";
+				display: inline-block;
+				color: $mainPinkColor;
+				position: absolute;
+				width: 16px;
+    			height: 16px;
+				left: 12px;
+				top: 14px;
+			}
+			.checked:before {
+				content: "\2713";
+				text-align: center;
+				line-height: 15px;
+				font-size: 25px;
+			}
+			.focus{
+				background-color: $mainPinkColor;
+			}
+			.focus:before{
+				color: $mainGrayColor;
 			}
 		}
 	}
@@ -179,6 +220,9 @@ ul{list-style: none;}
 		}
 		.focus > i{
 			color: $linkHoverColor;
+		}
+		.btn-lateral{
+			padding: 6px 20px;
 		}
 	}
 }

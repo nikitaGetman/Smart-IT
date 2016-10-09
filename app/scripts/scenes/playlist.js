@@ -19,15 +19,25 @@
       this.$el = $('.scene-playlist');
       var self = this;
       
-      this.$el.on('click', '.video-item', this.onItemClick);
-      this.$el.on('click', '.playlist-item', this.onMenuClick);
+      this.$el.on('click', '.video-item', function(e){
+        var url = e.currentTarget.getAttribute('data-url');
+        self.onItemClick(url);
+      });
+      this.$el.on('click', '.playlist-item', function(e){
+        var new_playlist = e.currentTarget.getAttribute('data-content');
+        self.onMenuClick(new_playlist);
+      });
 
-      this.playlists = this.getPlaylists();
-      self.currentPlaylist = 'Popular';
-      this.renderPlylists(this.playlists);
+      this.getPlaylists();
+      this.currentPlaylist = this.playlists[0]['value'];
+      this.renderPlylists();
 
+      window.addEventListener('playlist_change', function(e){
+          self.getPlaylists();
+          self.currentPlaylist = self.playlists[0]['value'];
+          self.renderPlylists();
+      });
 
-      //this.currentPlaylist = 'All';
       console.log('current playlist = ' + this.currentPlaylist);
 
       var response = this.updateItems();
@@ -46,9 +56,7 @@
       this.$el.hide();
     },
 
-    onItemClick: function(e){
-      var url = e.currentTarget.getAttribute('data-url');
-
+    onItemClick: function(url){
       if(url !== null){
           if(this.currentVideo !== url){
             console.log("OnItemClick url = " + url);
@@ -64,12 +72,9 @@
           }
       }      
     },
-
-    onMenuClick: function(e){
+    onMenuClick: function(new_playlist){
       // TODO: Stopped Here
-        var self = this;
-        var new_playlist = e.currentTarget.getAttribute('data-content'),
-            current = self.currentPlaylist;
+        var current = this.currentPlaylist;
 
         console.log('Current = '+current + ", new = " + new_playlist);
 
@@ -81,13 +86,15 @@
     },
 
     getPlaylists: function(){
-        return [{'value' : 'Popular'},
-                {'value' : 'Algorithms'}, 
-                {'value' : 'Web'},
-                {'value' : 'Android'},
-                {'value' : 'iOS'}];
+        var list = App.config.checkedPlaylists;
+        var res = [];
+        for(var i =0; i < list.length; i++){
+          res[i] = {"value" : list[i]};
+        }
+        this.playlists = res;
     },
-    renderPlylists: function(playlists){
+    renderPlylists: function(){
+        var playlists = this.playlists;
         var html = '';
 
         for(var i =0; i < playlists.length; i++){
@@ -98,17 +105,13 @@
             .empty()
             .html(html);
     },
-
     updateItems: function(){
       // ajax here
       return [{'url' : 'test_video.mp4', 'type' : 'hls', 'title' : 'Test'},
               {'url' : 'test_video.mp4', 'type' : 'vod', 'title' : 'Emirates Preview'}];
     },
-
     renderItems: function (items) {
       var html = '';
-
-      console.log(items);
 
        // console.log(items, itemHtml.toString())
       for ( var i = 0, len = items.length; i < len; i++ ) {

@@ -71,6 +71,34 @@ ul {
       height: 300px; }
     .scenes-wrapper .scene-playlist .row .block:hover {
       background-color: #ea4c88; }
+  .scenes-wrapper .scene-settings .box {
+    padding-top: 20px; }
+  .scenes-wrapper .scene-settings .module-categories h2, .scenes-wrapper .scene-settings .module-search_parameters h2 {
+    text-transform: capitalize; }
+  .scenes-wrapper .scene-settings .module-categories .nav-item, .scenes-wrapper .scene-settings .module-search_parameters .nav-item {
+    font-size: 20px;
+    display: block;
+    border-radius: 8px;
+    position: relative;
+    padding-left: 40px; }
+  .scenes-wrapper .scene-settings .module-categories .nav-item:before, .scenes-wrapper .scene-settings .module-search_parameters .nav-item:before {
+    content: "";
+    display: inline-block;
+    color: #ea4c88;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 12px;
+    top: 14px; }
+  .scenes-wrapper .scene-settings .module-categories .checked:before, .scenes-wrapper .scene-settings .module-search_parameters .checked:before {
+    content: "\2713";
+    text-align: center;
+    line-height: 15px;
+    font-size: 25px; }
+  .scenes-wrapper .scene-settings .module-categories .focus, .scenes-wrapper .scene-settings .module-search_parameters .focus {
+    background-color: #ea4c88; }
+  .scenes-wrapper .scene-settings .module-categories .focus:before, .scenes-wrapper .scene-settings .module-search_parameters .focus:before {
+    color: #2f3131; }
 
 .player {
   color: #2f3131;
@@ -115,6 +143,8 @@ ul {
       color: #4d5356; }
     .player .bottom_bar .focus > i {
       color: #fefefe; }
+    .player .bottom_bar .btn-lateral {
+      padding: 6px 20px; }
 
 .legend {
   background-color: #2f3131;

@@ -1,6 +1,10 @@
 (function () {
   "use strict";
 
+  window.addEventListener('storage', function(e) {  
+    console.log('Storage is change'); 
+  });
+
   window.App = {
     currentScene: null,
     scenes: {},
@@ -9,6 +13,8 @@
 
     initialize: function () {
       console.log('Initialization');
+      App.config.init();
+
       this.$wrap = $('.wrap');
       this.$player = $('.player');
 
@@ -16,7 +22,11 @@
 
       $$legend.show();
 
-      this.setEvents();
+      this.setEvents();      
+
+      window.addEventListener('storage', function(e) {
+        console.log(e);
+      });  
 
       // start navigation
       $$nav.on();
@@ -106,5 +116,5 @@
   };
 
   // main app initialize when smartbox ready
-  SB(_.bind(App.initialize, App));
+  SB.ready(_.bind(App.initialize, App));
 })();
