@@ -20,8 +20,9 @@
       var self = this;
       
       this.$el.on('click', '.video-item', function(e){
-        var url = e.currentTarget.getAttribute('data-url');
-        self.onItemClick(url);
+        var url = e.currentTarget.getAttribute('data-url'),
+            type = e.currentTarget.getAttribute('data-type');
+        self.onItemClick(url, type);
       });
       this.$el.on('click', '.playlist-item', function(e){
         var new_playlist = e.currentTarget.getAttribute('data-content');
@@ -56,14 +57,14 @@
       this.$el.hide();
     },
 
-    onItemClick: function(url){
+    onItemClick: function(url, type){
       if(url !== null){
           if(this.currentVideo !== url){
             console.log("OnItemClick url = " + url);
 
             Player.play({
               url: url,
-              type: e.currentTarget.getAttribute('data-type')
+              type: type
             });  
             this.currentVideo = url;
           }else{
