@@ -1,13 +1,108 @@
-<!DOCTYPE html>
-<html lang="en">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Smart IT</title>
+	<meta http-equiv="Content-Type" content="text/html; Charset=UTF-8"/>
 	<link rel="stylesheet" href="css/vendor.css">
 	<link rel="stylesheet" href="css/main.css">
+
+	<script src="scripts/vendor.js"></script>
+	
+
+	<script src="scripts/main.js"></script>
+
 </head>
 <body>
-	Hello World! Hola
-	<script src="scripts/vendor.js"></script>
+<div class="wrap">
+
+	<div class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<div class="navbar-brand">
+				
+			</div>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="navbar-nav menu-navigation">
+				<li class="nav-item" data-content="playlist">Home</li>
+				<li class="nav-item" data-content="popular">Popular</li>
+				<li class="nav-item" data-content="settings"><i class="fa fa-cog"></i></li>
+			</ul>
+		</div>
+	</div>
+	
+
+
+	<!-- Scenes wrapper -->
+	<div class="scenes-wrapper">
+		<!-- Scene Playlist -->
+		<div class="scene scene-playlist">
+				<!-- Left sidebar -->	
+			<div class="left-sidebar">
+				<div class="menu-items" data-nav_type="vbox" data-nav_loop="true">
+					<!-- Categories here -->
+				</div>
+			</div>
+				<!--  -->
+			<div class="container-fluid content">
+				<div class="row">
+						<!-- Content -->					
+				</div>	
+			</div>
+
+		</div>	
+
+		<!-- Scene Settings -->
+		<div class="scene scene-settings">
+				<!-- Left sidebar -->	
+			<div class="left-sidebar">
+				<div class="menu-items" data-nav_type="vbox" data-nav_loop="true">
+					<div class="nav-item leftbar-item" data-content="categories">Categories</div>
+					<div class="nav-item leftbar-item" data-content="search_parameters">Search parameters</div>
+					<div class="nav-item leftbar-item" data-content="new_playlist">New playlist</div>
+				</div>
+			</div>
+				<!-- Content -->
+			<div class="container-fluid content">
+				<div class="row">
+					<div class="module-categories module">
+						<div class="box col-md-6">
+						</div>
+					</div>	
+					<div class="module-search_parameters module">
+						<div class="box col-md-6">
+						</div>
+					</div>
+					<div class="module-new_playlist module">
+						New Playlist
+					</div>			
+				</div>	
+			</div>
+		</div>
+				
+	</div>
+
+</div>
+
+<div class="player">
+	<div class="bottom_bar">
+        <div class="progress">
+            <div class="progress-bar" style="width: 0%;"></div>
+        </div>
+        <div class="duration">00:00</div>
+        <div class="current-time">00:00</div>
+
+        <div class="player_controls" data-nav_loop="true" data-nav_type="hbox">
+        	<div class="btn btn-default nav-item button_add btn-lateral"><i class="fa fa-plus"></i></div>
+            <div class="btn btn-default nav-item button_rw"><i class="fa fa-backward"></i></div>
+            <div class="btn btn-default nav-item button_play_pause"><i class="fa fa-play fa-pause"></i></div>
+            <div class="btn btn-default nav-item button_ff"><i class="fa fa-forward"></i></div>
+            <div class="btn btn-default nav-item button_compress btn-lateral"><i class="fa fa-compress"></i></div>
+        </div>
+
+    </div>
+</div>
+
 </body>
 </html>

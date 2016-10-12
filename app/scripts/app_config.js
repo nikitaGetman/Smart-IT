@@ -9,27 +9,53 @@
   	storage: [],
   	init: function(){
   		App.config.storage.storageAvailable('localStorage');
- 		var params = this.getAllParameters();
- 		this.getCheckedPlaylists();
- 		this.getSearchParameters();
+	    
+      $.ajaxSetup({        
+        dataFilter: function(data, type){
+          //console.log(data);
+          var res = JSON.parse(data);
+          if(res['error']){
+            console.log('Respinse error ' + res['error']['code'] + ': ' + res['error']['text']);
+            $$error('Respinse error ' + res['error']['code'] + ': ' + res['error']['text']);
+            return false;
+          }
+          return res['response']['result'];
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+          console.log(textStatus);
+          $$error(textStatus);
+        }
+      });
+      
+      this.getAllParameters();
+ 		  this.getCheckedPlaylists();
+ 		  this.getSearchParameters();
    	},
   	getAllParameters: function(){
-  		// ajax to server
+  		/* ajax to server
   		var res = {'playlists' : ['Android', 'iOS', 'Python', 'C++', 'Web'],
   				   'parameters' : {
   				   		'languages' : ['en', 'ru']
   				   		}
   				   };
+      */
+      var self = this;
 
-		this.availiblePlaylists = res['playlists'];
-		this.availibleParameters = res['parameters'];
-  		return res;
+      $.ajax({url: 'api/application.getAllParameters',
+              async : false,
+              success: function(data){
+                if(!data) return false;
+
+                self.availiblePlaylists = data['playlists'];
+                self.availibleParameters = data['parameters'];
+              }
+      });
   	},
   	getCheckedPlaylists: function(){
   		if(this.storage.isAvailible){
   			var str = localStorage.getItem('checked_playlists');
   			if(str == null || str == "[]"){
-  				str = '["'+availiblePlaylists[0]+'"]';
+  				str = '["'+this.availiblePlaylists[0]+'"]';
   			}
   			var checked = JSON.parse(str);
   						// если выбранного плейлиста больше нет в общем массиве , то удаляем его
@@ -40,7 +66,6 @@
   				}
   			}
 
-  			console.log('Checked playlists: ' + checked);
   			this.checkedPlaylists = checked;
   		}
   		else{
@@ -49,9 +74,6 @@
   	getSearchParameters: function(){
   		if(this.storage.isAvailible){
   			var str = localStorage.getItem('search_parameters');
-
-  			console.log('Str parameters: ');
-  			console.log(str);
 
   			if(str == null || str == "[]"){
   				str = '{"languages" : ["en", "ru"]}';
@@ -74,8 +96,6 @@
 
   			}  			
 
-  			console.log('Search parameters: ');
-  			console.log(param);
   			this.checkedParameters = param;
   		}else{
 
@@ -83,31 +103,50 @@
   	},
   	setCheckedPlaylists: function(arr){
 	    if(this.storage.isAvailible){
-	    	var str = JSON.stringify(arr);
+        if(_.difference(this.checkedPlaylists, arr).length > 0 || _.difference(arr, this.checkedPlaylists).length > 0){
+
+	    	  var str = JSON.stringify(arr);
         	localStorage.setItem('checked_playlists', str);
 
         	this.checkedPlaylists = arr;
 
         	var event = new Event('playlist_change');
         	window.dispatchEvent(event); 
+        }
+        else{
+          console.log('setCheckedPlaylists: Nothing is change');
+        }
     	}
     	else{
 
     	}           
   	},
   	setSearchParameters: function(arr){
+      var is_changed = false;
+      for(var item in arr){
+        if(_.difference(this.checkedParameters[item], arr[item]).length > 0 || _.difference(arr[item], this.checkedParameters[item]).length > 0){
+            is_changed = true;
+            break;
+        }
+      }
+
   		if(this.storage.isAvailible){
-  			console.log(arr);
-  			if(arr == []){
-              arr = {'languages' : ['en']};
-            }
-            var str = JSON.stringify(arr);
-            localStorage.setItem('search_parameters', str);
+        if(is_changed){
 
-            this.searchParameters = arr;
+			    if(arr == []){
+            arr = {'languages' : ['en']};
+          }
+          var str = JSON.stringify(arr);
+          localStorage.setItem('search_parameters', str);
 
-            var event = new Event('parameters_change');
-            window.dispatchEvent(event);
+          this.checkedParameters = arr;
+
+          var event = new Event('parameters_change');
+          window.dispatchEvent(event);
+        }
+        else{
+             console.log('setCheckedParameters: Nothing is change');
+        }
   		}else{
 
   		}

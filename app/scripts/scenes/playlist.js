@@ -3,7 +3,7 @@
   var _inited;
 
   var itemHtml = _.template('<div class="col-md-3" data-nav_type="vbox"> \
-                  <div class="block nav-item video-item" data-url="<%=url%>" data-type="<%=type%>">\
+                  <div class="block nav-item video-item" data-url="<%=link%>" data-type="<%=type%>">\
                     <%=title%>\
                   </div>\
                 </div>');
@@ -14,6 +14,7 @@
     currentVideo : null,
     playlists: {},
     currentPlaylist: null,
+    offset: 0,
 
     init: function () {
       this.$el = $('.scene-playlist');
@@ -30,19 +31,20 @@
       });
 
       this.getPlaylists();
-      this.currentPlaylist = this.playlists[0]['value'];
       this.renderPlylists();
+      this.$el.find('.playlist-item:eq(0)').click();
 
       window.addEventListener('playlist_change', function(e){
+          console.log("Playlist change event");
           self.getPlaylists();
           self.currentPlaylist = self.playlists[0]['value'];
           self.renderPlylists();
+          self.updateItems();
       });
-
-      console.log('current playlist = ' + this.currentPlaylist);
-
-      var response = this.updateItems();
-      this.renderItems(response);
+      window.addEventListener('parameters_change', function(e){
+          self.offset = 0;
+          self.updateItems();
+      });
 
       _inited = true;
     },
@@ -61,20 +63,18 @@
       if(url !== null){
           if(this.currentVideo !== url){
             console.log("OnItemClick url = " + url);
-
             Player.play({
               url: url,
               type: type
-            });  
+            }); 
+
             this.currentVideo = url;
           }else{
-            var e = $.Event("keydown", { keyCode: 68}); //"keydown" if that's what you're doing
-            $("body").trigger(e);
+            App.toggleView();
           }
       }      
     },
     onMenuClick: function(new_playlist){
-      // TODO: Stopped Here
         var current = this.currentPlaylist;
 
         console.log('Current = '+current + ", new = " + new_playlist);
@@ -82,6 +82,8 @@
         if(current !== new_playlist){
           if(new_playlist !== null){
             this.currentPlaylist = new_playlist;
+            this.offset = 0;
+            this.updateItems();
           }
         }
     },
@@ -105,18 +107,29 @@
         this.$el.find('.menu-items')
             .empty()
             .html(html);
+ 
     },
     updateItems: function(){
-      // ajax here
-      return [{'url' : 'test_video.mp4', 'type' : 'hls', 'title' : 'Test'},
-              {'url' : 'test_video.mp4', 'type' : 'vod', 'title' : 'Emirates Preview'}];
+      var params = JSON.stringify(App.config.checkedParameters);
+
+      $.ajax({
+        url: 'api/application.getByCategory',
+        type: 'POST',
+        data: {'parameters' : params, 'category' : this.currentPlaylist, 'offset' : this.offset},
+        success: this.renderItems,
+        context: this
+      });
     },
     renderItems: function (items) {
       var html = '';
 
-       // console.log(items, itemHtml.toString())
-      for ( var i = 0, len = items.length; i < len; i++ ) {
-        html += itemHtml(items[i]);
+      if(items.length > 0){
+        for ( var i = 0, len = items.length; i < len; i++ ) {
+          html += itemHtml(items[i]);
+          this.offset++;
+        }
+      }else{
+        html = '<div class="text-center">Ничего не найдено</div>'
       }
 
       this.$el.find('.row')

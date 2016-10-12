@@ -25,12 +25,28 @@ gulp.task('clean', function () {
 });
 
 // Build 
-gulp.task('build', ['clean'], function () {
+gulp.task('build', ['clean', 'update_vendor_files', 'php'], function () {
     return gulp.src('app/*.html')
         .pipe(useref())
         .pipe(gulpif('*.js', uglify()))
         .pipe(gulpif('*.css', minifyCss()))
         .pipe(gulp.dest('dist'));
+});
+
+// PHP
+gulp.task('php', ['update_vendor_files'], function(){
+    gulp.src('app/api/*.*')
+        .pipe(gulp.dest('dist/api/'));
+    gulp.src('app/api/modules/*.*')
+        .pipe(gulp.dest('dist/api/modules/'));    
+});
+
+// Update vendor files
+gulp.task('update_vendor_files', ['clean'], function(){
+    gulp.src('app/bower_components/font-awesome/fonts/*.*')
+        .pipe(gulp.dest('dist/fonts/'));
+    gulp.src('app/styles/css/img/*.*')
+        .pipe(gulp.dest('dist/css/img/'));
 });
 
 // Html

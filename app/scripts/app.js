@@ -8,6 +8,7 @@
   window.App = {
     currentScene: null,
     scenes: {},
+    config: {},
     isShown: true,
     isPlayerInited: false,
 
@@ -21,14 +22,9 @@
       this.$player.hide();
 
       $$legend.show();
-
+          // start navigation
       this.setEvents();      
 
-      window.addEventListener('storage', function(e) {
-        console.log(e);
-      });  
-
-      // start navigation
       $$nav.on();
     },
 
@@ -50,6 +46,7 @@
           Player.stop();
         },
         'nav_key:pause': function () {
+          console.log('nav_key:pause');
           Player.togglePause();
         },
         'nav_key:exit': function(){
@@ -69,6 +66,11 @@
       Player.on('stop', function () {
         $$log('player stop');
         console.log('player stop');
+      });
+      Player.on('bufferingBegin', function(){
+
+        //self.isPlayerInited = true;
+        //self.toggleView();
       });
 
 

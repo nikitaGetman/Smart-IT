@@ -63,6 +63,14 @@ $(function () {
         $pausePlayButton.find('.fa').addClass('fa-pause');
     });
 
+    Player.on("stop", function(){
+        $currentTime.html(Player.formatTime(0));
+        $duration.html(Player.formatTime(0));
+        $progressBar.css({
+            width: "0%"
+        });
+    });
+
     //rewind to start after complete
     Player.on("complete", function () {
         Player.seek(0);
@@ -70,6 +78,7 @@ $(function () {
             width: 0
         });
         $pausePlayButton.find('.fa').removeClass("fa-pause");
+        $pausePlayButton.find('.fa').addClass('fa-play');
         showPlayer();
     });
 
@@ -111,25 +120,27 @@ $(function () {
     $('.button_compress').click(function(){
         isPlaying = false;
         $pausePlayButton.find('.fa').removeClass("fa-pause");
-        
+        $pausePlayButton.find('.fa').addClass('fa-play');
         App.toggleView();
     });
 
     $('.btn').on('nav_focus', function(){
         isPlaying = true;
+        showPlayer();
     });
 
     $('body').on('nav_key', function(){
+        console.log("$('body').on('nav_key'");
         if(isPlaying){
             showPlayer();
         
-            if(Player.state === 'pause'){
+            /*if(Player.state === 'pause'){
                 $pausePlayButton.find('.fa').addClass('fa-play');
                 $pausePlayButton.find('.fa').removeClass('fa-pause');
             }else if(Player.state === 'play'){
                 $pausePlayButton.find('.fa').addClass('fa-pause');
                 $pausePlayButton.find('.fa').removeClass('fa-play');
-            }
+            }*/
         }
     });
 });
