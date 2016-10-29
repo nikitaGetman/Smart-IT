@@ -32,13 +32,7 @@
  		  this.getSearchParameters();
    	},
   	getAllParameters: function(){
-  		/* ajax to server
-  		var res = {'playlists' : ['Android', 'iOS', 'Python', 'C++', 'Web'],
-  				   'parameters' : {
-  				   		'languages' : ['en', 'ru']
-  				   		}
-  				   };
-      */
+      /*
       var self = this;
 
       $.ajax({url: 'api/application.getAllParameters',
@@ -46,10 +40,26 @@
               success: function(data){
                 if(!data) return false;
 
+                // instead server
+                data = '{"response":{"result":{"playlists":["Android","C#","C++","Game Dev","HTML5 \/ CSS3","iOS","Java","PHP","Python","Ruby","SEO","SMM","Web Design"],"parameters":{"languages":["en","ru","ge","fr"]}}}}';
+                data = JSON.parse(data);
+                data = data.response.result;
+                ////////////////
+
                 self.availiblePlaylists = data['playlists'];
                 self.availibleParameters = data['parameters'];
               }
-      });
+      });*/
+
+       // instead server
+        var data = '{"response":{"result":{"playlists":["Android","C#","C++","Game Dev","HTML5 \/ CSS3","iOS","Java","PHP","Python","Ruby","SEO","SMM","Web Design"],"parameters":{"languages":["en","ru","ge","fr"]}}}}';
+        data = JSON.parse(data);
+        data = data.response.result;
+        ////////////////
+
+        this.availiblePlaylists = data['playlists'];
+        this.availibleParameters = data['parameters'];
+
   	},
   	getCheckedPlaylists: function(){
   		if(this.storage.isAvailible){

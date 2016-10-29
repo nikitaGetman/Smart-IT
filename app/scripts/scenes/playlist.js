@@ -110,6 +110,7 @@
  
     },
     updateItems: function(){
+      /*
       var params = JSON.stringify(App.config.checkedParameters);
 
       $.ajax({
@@ -118,9 +119,19 @@
         data: {'parameters' : params, 'category' : this.currentPlaylist, 'offset' : this.offset},
         success: this.renderItems,
         context: this
-      });
+      });*/
+      // instead server
+      this.renderItems(null);
+      console.log('ajax request to server here (emulating because without LocalServer)');
+      /////////////////
     },
     renderItems: function (items) {
+      // instead server
+      items = '{"response":{"result":[{"id":"1","title":"\u0422\u0435\u0441\u0442\u043e\u0432\u0430\u044f \u0437\u0430\u043f\u0438\u0441\u044c","link":"test.mp4","type":"vod","category":"1 5","language":"ru","views":"0","date":"2016-10-12 03:16:16"},{"id":"3","title":"jQuery + Ajax","link":"test.mp4","type":"vod","category":"3 5","language":"en","views":"0","date":"2016-10-12 03:23:51"},{"id":"4","title":"Animals","link":"test.mp4","type":"vod","category":"5 0","language":"en","views":"0","date":"2016-10-12 22:19:11"}]}}';
+      items = JSON.parse(items);
+      items = items.response.result; 
+      /////////////////
+
       var html = '';
 
       if(items.length > 0){

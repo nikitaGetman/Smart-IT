@@ -15,11 +15,11 @@ $modules_whitelist = array(
 );
 
 $categories = array(
-	'Android', 'Java', 'Python', 'iOS', 'HTML5 / CSS3', 'Game Developer', 'Web Design', 'Ruby', 'C#', 'C++', 'PHP', 'SMM', 'SEO'
+	'Android', 'Java', 'Python', 'iOS', 'HTML5 / CSS3', 'Game Dev', 'Web Design', 'Ruby', 'C#', 'C++', 'PHP', 'SMM', 'SEO'
 );
 
 $parameters = array(
-	'languages' => array('en', 'ru', 'it')
+	'languages' => array('en', 'ru', 'ge', 'fr')
 );
 
 

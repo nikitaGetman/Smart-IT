@@ -19,7 +19,7 @@ function getAllParameters(){
 /*
 	Method: getByCategory
 */
-function getByCategory(){
+function getByCategory(){	
 	global $categories, $parameters;
 	
 	$cat_name = validate_form($_POST['category']);

@@ -15,8 +15,10 @@ $(function () {
   });
 
   $body.on('nav_focus', '.input-item', function() {
-    keys.enter('Show keyboard');
-    keys.number('Num input');
+    keys.enter('Check');
+  });
+  $body.on('nav_focus', '.checked', function(){
+    keys.enter('Uncheck');
   });
 
   $body.on('nav_blur', '.input-item', function() {
